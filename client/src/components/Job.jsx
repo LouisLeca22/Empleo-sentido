@@ -18,8 +18,6 @@ const Job = ({
 }) => {
 
   const {setEditJob, deleteJob, user} = useAppContext()
-  console.log("created by" + createdBy)
-  console.log("crurrent user " + user._id)
   moment.locale("es");
   let date = moment(createdAt).format("Do MMMM YYYY");
 
