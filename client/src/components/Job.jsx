@@ -12,12 +12,14 @@ const Job = ({
   company,
   jobLocation,
   jobType,
+  createdBy,
   createdAt,
   status,
 }) => {
 
   const {setEditJob, deleteJob, user} = useAppContext()
-
+  console.log("created by" + createdBy)
+  console.log("crurrent user " + user._id)
   moment.locale("es");
   let date = moment(createdAt).format("Do MMMM YYYY");
 
@@ -37,7 +39,7 @@ const Job = ({
               <JobInfo icon={<FaBriefcase />} text={jobType} />
               <div className={`status ${status}`}>{status}</div>
           </div>
-          {user && 
+          {user && user._id === createdBy && 
                    <footer>
                    <div className="actions">
                        <Link to="/add-job" onClick={() => setEditJob(_id)} className="btn edit-btn">
